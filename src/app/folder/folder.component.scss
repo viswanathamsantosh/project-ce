@@ -1,0 +1,15 @@
+// mat-grid-tile {
+  // background: lightblue;
+// }
+mat-card {
+  width: calc(100% - 70px);
+  height: calc(100% - 70px);
+}
+.mat-icon.large {
+  font-size: 40px;
+}
+.mat-spinner {
+  position: relative;
+  margin-left: 50%;
+  margin-right: 50%;
+}
