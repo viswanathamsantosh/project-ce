@@ -70,12 +70,31 @@ describe('FolderComponent', () => {
   it('goBack method should be defined', () => {
     expect(component.goBack).toBeTruthy();
   });
-  it('onClickFileItem method', () => {
-    const item = {
-      directory: false,
-      path: '/path'
-    };
-    const val = component.onClickFileItem(item);
-    expect(component.getFileById).toHaveBeenCalledWith(item.path);
+  describe('onClickFileItem method', () => {
+    it('on click of file item', () => {
+      const item = {
+        directory: false,
+        path: '/path'
+      };
+      spyOn(component, 'getFileById');
+      const val = component.onClickFileItem(item);
+      expect(component.getFileById).toHaveBeenCalledWith(item.path);
+    });
+    it('on click of directory', () => {
+      const item = {
+        directory: true,
+        path: '/path',
+        id: 'folderId'
+      };
+      const val = component.onClickFileItem(item);
+      expect(component.folderId).toEqual(item.id);
+      expect(component.folderPath).toEqual(item.path);
+    });
+  });
+  it('click back button', () => {
+    component.goBack();
+    // jasmine.createSpyObj
+    // spyOn('Location', 'back');
+    expect(component.folderPath).toEqual('/cloud-elements');
   });
 });
